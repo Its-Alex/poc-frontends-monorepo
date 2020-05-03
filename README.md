@@ -3,6 +3,13 @@
 In this repository I tried to setup a monorepo to use React CRA with shared
 components and a storybook.
 
+# Why CRA
+
+Using `Create React App` is the best way to follow react update and keep
+compatibility with new features.
+
+In this repo I tried to touch CRA config as little as possible.
+
 # Goals
 
 - [X] React create app that use shared components
