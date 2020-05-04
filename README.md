@@ -14,9 +14,16 @@ In this repo I tried to touch CRA config as little as possible.
 
 - [X] React create app that use shared components
   - [X] Hot reloading
-- [ ] Storybook
-  - [ ] Using view from React CRA app
-  - [ ] Using component from shared library
+  - [X] Watch
+  - [X] Build
+  - [X] With asset (image)
+- [X] Storybook
+  - [X] Hot reloading
+  - [X] Watch
+  - [X] Build
+  - [X] With asset (image)
+  - [X] Using view from React CRA app
+  - [X] Using component from shared library
 
 ## React CRA
 

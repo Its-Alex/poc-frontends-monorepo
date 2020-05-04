@@ -1,23 +1,52 @@
+const path = require('path');
+
+const getYarnWorkspaces = require('get-yarn-workspaces');
+
 module.exports = {
   stories: ['../src/**/*.stories.js'],
   addons: [
-    '@storybook/preset-create-react-app',
+    {
+      name: '@storybook/preset-create-react-app',
+      options: {
+        craOverrides: {
+          fileLoaderExcludes: ['pdf'],
+        },
+      },
+    },
     '@storybook/addon-actions',
     '@storybook/addon-links',
   ],
   webpackFinal: async (config, { configType }) => {
-    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-    // You can change the configuration based on that.
-    // 'PRODUCTION' is used when building the static version of storybook.
+    const packages = getYarnWorkspaces().map(name => {
+      if (name.includes('storybook')) return null
 
-    // Make whatever fine-grained changes you need
-    config.module.rules.push({
-      test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-      include: path.resolve(__dirname, '../'),
+      const splits = name.split('/')
+      return `${splits[splits.length - 1]}/`
+    }).filter(e => e)
+
+    config.module.rules.forEach(r => {
+      if (r.oneOf) {
+        r.oneOf.forEach(o => {
+          if (
+            Array.isArray(o.include) &&
+            typeof o.loader === 'string' &&
+            o.loader.endsWith(path.join('node_modules', 'babel-loader', 'lib', 'index.js'))
+          ) {
+            console.log('Adding Lerna packages to babel-loader include:');
+            o.include = packages.reduce(
+              (acc, customPackage) => {
+                const packagePath = path.resolve(__dirname, `../../${customPackage}`);
+                console.log(`  * Added ${packagePath}`);
+                acc.push(packagePath);
+                return acc;
+              },
+              o.include
+            );
+          }
+        });
+      }
     });
 
-    // Return the altered config
     return config;
-  }
+  },
 };

@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "dependencies": {
-    "@monorepo/common": "*",
-    "@monorepo/my-app": "*"
-  },
   "devDependencies": {
+    "@monorepo/common": "*",
+    "@monorepo/my-app": "*",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
-    "@storybook/react": "^5.3.18"
+    "@storybook/react": "^5.3.18",
+    "get-yarn-workspaces": "1.0.2",
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "storybook": "start-storybook -p 9009",

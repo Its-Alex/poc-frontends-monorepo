@@ -3,5 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "description": "common package",
-  "license": "ISC"
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
 }
