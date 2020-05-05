@@ -18,10 +18,12 @@ module.exports = {
   ],
   webpackFinal: async (config, { configType }) => {
     const packages = getYarnWorkspaces().map(name => {
-      if (name.includes('storybook')) return null
+      const currentDir = __dirname.split('/')
 
-      const splits = name.split('/')
-      return `${splits[splits.length - 1]}/`
+      if (name.includes(currentDir[currentDir.length - 2])) return null
+
+      const packagePath = name.split('/')
+      return `${packagePath[packagePath.length - 1]}/`
     }).filter(e => e)
 
     config.module.rules.forEach(r => {
