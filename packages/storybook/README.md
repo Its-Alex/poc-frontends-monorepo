@@ -5,7 +5,7 @@ then the webpack configuration has been updated.
 
 We use `babel-loader` to transpile file from others repositories before build too.
 
-All is done in [`.storybook/main.js`](.storybook/main.js).
+All is done in [`.storybook/main.js`](.storybook/main.js#19).
 
 ## Getting started
 

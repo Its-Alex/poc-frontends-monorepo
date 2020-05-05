@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 We use `babel-loader` to transpile file from others repositories before build too.
 
+You can find what is done in [`craco.config.js`](craco.config.js).
+
 ## Available Scripts
 
 In the project directory, you can run:
