@@ -52,14 +52,14 @@ to override CRA configuration and add others repositories to `babel-loader` in
 
 ## Storybook
 
-I do the same thing that with CRA, storybook has fonctions to overrides CRA configuration.
+I do the same thing that with CRA, storybook has functions to overrides CRA configuration.
 
 ## Getting started
 
 Install dependencies:
 
 ```
-$ yarn run start
+$ yarn install
 ```
 
 Start applications:
